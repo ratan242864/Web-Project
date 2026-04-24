@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÉLVORA - My Orders</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">ÉLVORA</div>
+
+    <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+    </ul>
+
+    <div class="nav-icons">
+        <a href="#" id="search-btn" class="icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <circle cx="11" cy="11" r="7" stroke="#C2567A" stroke-width="2"/>
+                <line x1="16" y1="16" x2="22" y2="22" stroke="#C2567A" stroke-width="2"/>
+            </svg>
+        </a>
+
+        <a href="wishlist.html" class="icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s-6-4.35-9-8.5C-1 8 1 3 5 3c2.54 0 4 1.5 4 1.5S10.46 3 13 3c4 0 6 5 2 9.5C18 16.65 12 21 12 21z" 
+                      stroke="#C2567A" stroke-width="2" fill="none"/>
+            </svg>
+        </a>
+
+        <a href="#" id="profile-btn" class="icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="8" r="4" stroke="#C2567A" stroke-width="2"/>
+                <path d="M4 21c0-4 4-7 8-7s8 3 8 7" stroke="#C2567A" stroke-width="2" fill="none"/>
+            </svg>
+        </a>
+        <a href="cart.html" id="cart-btn" class="icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <circle cx="9" cy="21" r="1" stroke="#C2567A" stroke-width="2"/>
+                <circle cx="20" cy="21" r="1" stroke="#C2567A" stroke-width="2"/>
+                <path d="M1 1h4l2.5 13a2 2 0 0 0 2 1.5h10a2 2 0 0 0 2-1.5L23 6H6"
+                      stroke="#C2567A" stroke-width="2" fill="none"/>
+            </svg>
+        </a>
+    </div>
+</nav>
+
+<div id="search-panel" class="search-modal" aria-label="Search panel">
+    <span class="close-btn" id="search-close">&times;</span>
+    <div class="search-modal-content">
+        <input id="search-input" type="text" placeholder="Search products, categories...">
+        <button id="search-submit" class="btn">Search</button>
+    </div>
+</div>
+
+<div id="profile-panel" class="search-modal" aria-label="Profile panel">
+    <span class="close-btn" id="profile-close">&times;</span>
+    <div class="search-modal-content">
+        <h2>Your Account</h2>
+        <a href="myaccount.html" class="btn">My Account</a>
+        <a href="myorders.html" class="btn">Orders</a>
+        <a href="wishlist.html" class="btn">Wishlist</a>
+        <button class="btn" onclick="logoutUser()">Logout</button>
+    </div>
+</div>
+
+<div class="container">
+    <a href="home.html" class="back-btn">&larr; Back to Home</a>
+    <h2 class="section-title">My Orders</h2>
+
+    <div class="orders-list">
+        <div class="order-card">
+            <div class="order-header">
+                <h3>Order #12345</h3>
+                <span class="order-status delivered">Delivered</span>
+            </div>
+            <p><strong>Date:</strong> April 15, 2026</p>
+            <p><strong>Total:</strong> ₹2,499</p>
+            <div class="order-items">
+                <div class="order-item">
+                    <img src="images/trend1.jpg.jpg" alt="Beige Wool Coat">
+                    <div>
+                        <p>Beige Wool Coat</p>
+                        <p>Qty: 1</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn" onclick="viewOrderDetails('12345')">View Details</button>
+        </div>
+
+        <div class="order-card">
+            <div class="order-header">
+                <h3>Order #12346</h3>
+                <span class="order-status shipped">Shipped</span>
+            </div>
+            <p><strong>Date:</strong> April 10, 2026</p>
+            <p><strong>Total:</strong> ₹1,799</p>
+            <div class="order-items">
+                <div class="order-item">
+                    <img src="images/top1.jpg.jpg" alt="White Ruffle Top">
+                    <div>
+                        <p>White Ruffle Top</p>
+                        <p>Qty: 1</p>
+                    </div>
+                </div>
+                <div class="order-item">
+                    <img src="images/shop-dress-01.jpg" alt="Elegant Pink Dress">
+                    <div>
+                        <p>Elegant Pink Dress</p>
+                        <p>Qty: 1</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn" onclick="viewOrderDetails('12346')">View Details</button>
+        </div>
+
+        <div class="order-card">
+            <div class="order-header">
+                <h3>Order #12347</h3>
+                <span class="order-status processing">Processing</span>
+            </div>
+            <p><strong>Date:</strong> April 5, 2026</p>
+            <p><strong>Total:</strong> ₹999</p>
+            <div class="order-items">
+                <div class="order-item">
+                    <img src="images/top3.jpg.jpg" alt="Off-Shoulder Top">
+                    <div>
+                        <p>Off-Shoulder Top</p>
+                        <p>Qty: 1</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn" onclick="viewOrderDetails('12347')">View Details</button>
+        </div>
+    </div>
+</div>
+
+<!-- Order Details Modal -->
+<div id="order-details-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('order-details-modal')">&times;</span>
+        <h2 id="order-title">Order Details</h2>
+        <div id="order-details-content">
+            <!-- Details will be populated here -->
+        </div>
+    </div>
+</div>
+
+<footer class="elvora-footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>ÉLVORA</h3>
+            <p>Your destination for premium women's fashion.  
+            Elegant • Minimal • Confident.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Offers</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Help</h4>
+            <ul>
+                <li><a href="#">Customer Support</a></li>
+                <li><a href="#">Return & Refund</a></li>
+                <li><a href="#">Track Order</a></li>
+                <li><a href="#">FAQs</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Connect With Us</h4>
+            <div class="footer-socials">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2026 ÉLVORA. All Rights Reserved.
+    </div>
+</footer>
+
+<script>
+// Modal functionality
+const searchBtn = document.getElementById('search-btn');
+const profileBtn = document.getElementById('profile-btn');
+const searchPanel = document.getElementById('search-panel');
+const profilePanel = document.getElementById('profile-panel');
+const searchClose = document.getElementById('search-close');
+const profileClose = document.getElementById('profile-close');
+
+searchBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    searchPanel.style.display = 'flex';
+});
+
+profileBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    profilePanel.style.display = 'flex';
+});
+
+searchClose.addEventListener('click', () => { searchPanel.style.display = 'none'; });
+profileClose.addEventListener('click', () => { profilePanel.style.display = 'none'; });
+window.addEventListener('click', (e) => {
+    if (e.target === searchPanel) searchPanel.style.display = 'none';
+    if (e.target === profilePanel) profilePanel.style.display = 'none';
+});
+
+// Order functions
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
+
+function viewOrderDetails(orderId) {
+    const orders = {
+        '12345': {
+            title: 'Order #12345',
+            date: 'April 15, 2026',
+            total: '₹2,499',
+            status: 'Delivered',
+            items: [
+                { name: 'Beige Wool Coat', qty: 1, price: '₹2,499', img: 'images/trend1.jpg.jpg' }
+            ],
+            shipping: '123 Fashion Street, Style City, SC 12345',
+            payment: 'Credit Card ending in ****1234'
+        },
+        '12346': {
+            title: 'Order #12346',
+            date: 'April 10, 2026',
+            total: '₹1,799',
+            status: 'Shipped',
+            items: [
+                { name: 'White Ruffle Top', qty: 1, price: '₹799', img: 'images/top1.jpg.jpg' },
+                { name: 'Elegant Pink Dress', qty: 1, price: '₹1,000', img: 'images/shop-dress-01.jpg' }
+            ],
+            shipping: '123 Fashion Street, Style City, SC 12345',
+            payment: 'Credit Card ending in ****1234'
+        },
+        '12347': {
+            title: 'Order #12347',
+            date: 'April 5, 2026',
+            total: '₹999',
+            status: 'Processing',
+            items: [
+                { name: 'Off-Shoulder Top', qty: 1, price: '₹999', img: 'images/top3.jpg.jpg' }
+            ],
+            shipping: '123 Fashion Street, Style City, SC 12345',
+            payment: 'Credit Card ending in ****1234'
+        }
+    };
+
+    const order = orders[orderId];
+    if (!order) return;
+
+    document.getElementById('order-title').textContent = order.title;
+    const content = document.getElementById('order-details-content');
+    content.innerHTML = `
+        <p><strong>Date:</strong> ${order.date}</p>
+        <p><strong>Status:</strong> ${order.status}</p>
+        <p><strong>Total:</strong> ${order.total}</p>
+        <h3>Items:</h3>
+        <ul>
+            ${order.items.map(item => `
+                <li>
+                    <img src="${item.img}" alt="${item.name}" style="width: 50px; height: 50px; object-fit: cover;">
+                    ${item.name} - Qty: ${item.qty} - ${item.price}
+                </li>
+            `).join('')}
+        </ul>
+        <p><strong>Shipping Address:</strong> ${order.shipping}</p>
+        <p><strong>Payment Method:</strong> ${order.payment}</p>
+    `;
+    document.getElementById('order-details-modal').style.display = 'block';
+}
+
+// Logout function
+function logoutUser() {
+    localStorage.clear();
+    alert('Logged out successfully!');
+    window.location.href = 'home.html';
+}
+</script>
+
+</body>
+</html>
